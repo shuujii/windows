@@ -9,27 +9,27 @@ shallow_clone: true
 
 environment:
   vs_root: C:\Program Files (x86)\Microsoft Visual Studio
-  for:
-    -
-      matrix:
-        only:
-          - image: Visual Studio 2019
 
+for:
+  -
+    matrix:
+      only:
+        - image: Visual Studio 2019
+    environment:
+      matrix:
         # Visual Studio 2019 64bit
         - visualcpp: $(vs_root)\2019\Community\VC\Auxiliary\Build\vcvars64.bat
-
-    -
+  -
+    matrix:
+      only:
+        - image: Visual Studio 2017
+    environment:
       matrix:
-        only:
-          - image: Visual Studio 2017
-
         # Visual Studio 2017 64bit
         - visualcpp: $(vs_root)\2017\Community\VC\Auxiliary\Build\vcvars64.bat
-
         # Visual Studio 2015 64bit
         - visualcpp: $(vs_root) 14.0\VC\vcvarsall.bat
           machine: amd64
-
         # Visual Studio 2013 64bit
         - visualcpp: $(vs_root) 12.0\VC\vcvarsall.bat
           machine: amd64
