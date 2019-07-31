@@ -37,6 +37,7 @@ environment:
 #    )
 
 init:
+  - call "%visualcpp%" %machine%
   - set PATH=C:\Ruby26-x64\bin;%PATH%
 
 build_script:
