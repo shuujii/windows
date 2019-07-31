@@ -1,0 +1,25 @@
+version: "{build}"
+
+image:
+  Visual Studio 2019
+  Visual Studio 2017
+  Visual Studio 2015
+  Visual Studio 2013
+
+shallow_clone: true
+
+#init:
+#  - call "%visualcpp%" %machine%
+#  # For using Rubyinstaller's Ruby 2.4 64bit
+#  - set PATH=C:\Ruby24-x64\bin;%PATH%
+#  - ruby --version
+#
+#install:
+#  - if not exist win_flex_bison (
+#      appveyor DownloadFile "https://github.com/lexxmark/winflexbison/releases/download/v.2.5.10/win_flex_bison-2.5.10.zip" &
+#      7z x -y -owin_flex_bison win_flex_bison-2.5.10.zip
+#    )
+
+build_script:
+  - tzutil /l
+  - rake time_zone
