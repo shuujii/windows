@@ -33,9 +33,13 @@ print_is_dst(struct tm *tm)
 static void
 print_strftime(struct tm *tm)
 {
-  char strftime_z[64];
-  strftime(strftime_z, sizeof(strftime_z), "%Y-%m-%d %H:%M:%S, z=%z, Z=%Z", tm);
+  char strftime_z[128];
+  strftime(strftime_z, sizeof(strftime_z), "%Y-%m-%d %H:%M:%S [%z]", tm);
   P("s", strftime_z);
+
+  char strftime_Z[128];
+  strftime(strftime_Z, sizeof(strftime_Z), "%Z", tm);
+  P("s", strftime_Z);
 }
 
 static void
