@@ -1,9 +1,13 @@
 version: "{build}"
 
 environment:
+  vs_root: C:\Program Files (x86)\Microsoft Visual Studio
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+      vc: $(vs_root)\2019\Community\VC\Auxiliary\Build\vcvars64.bat
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      vc: $(vs_root)\2017\Community\VC\Auxiliary\Build\vcvars64.bat
+      arch: amd64
 
 ##os: Visual Studio 2019
 #image:
@@ -41,6 +45,7 @@ environment:
 
 init:
 #  - call "%visualcpp%" %machine%
+  - call "%vc%" %arch%
   - set PATH=C:\Ruby26-x64\bin;%PATH%
 
 build_script:
