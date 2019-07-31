@@ -13,7 +13,7 @@ Dir.glob("src/*.c") do |src|
     else
       cmd = "clang -Wall -o #{exe} #{src}"
     end
-    puts "$ #{cmd}"
+#    puts "$ #{cmd}"
     sh cmd
   end
 end
