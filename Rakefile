@@ -2,7 +2,6 @@ require 'rbconfig'
 
 Dir.glob("src/*.c") do |src|
   base_exe = File.basename(src, ".*")
-#  exe = File.join("bin", "#{base_exe}#{RbConfig::CONFIG['EXEEXT']}")
   exe = "bin/#{base_exe}#{RbConfig::CONFIG['EXEEXT']}"
 
   desc base_exe
@@ -10,7 +9,7 @@ Dir.glob("src/*.c") do |src|
   file exe => src do |t|
     mkpath "bin"
     if RbConfig::CONFIG['host_os'] =~ /mswin(?!ce)|mingw|bccwin/
-      cmd = "cl.exe /W3 #{src} /link /out:#{exe}"
+      cmd = "cl /nologo /W3 /D_CRT_SECURE_NO_WARNINGS #{src} /link /out:#{exe}"
     else
       cmd = "clang -Wall -o #{exe} #{src}"
     end

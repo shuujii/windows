@@ -2,9 +2,13 @@
 #include <stdlib.h>
 #include <time.h>
 
-//#if defined(_WIN32) || defined(_WIN64)
+#if defined(_WIN32) || defined(_WIN64)
 //# include <windows.h>
-//#endif
+# define timegm _mkgmtime
+# define PRITIME "lld"
+#else
+# define PRITIME "ld"
+#endif
 
 #define P(specifier, v) printf("%10s = %" specifier "\n", #v, v)
 
@@ -40,9 +44,9 @@ print_offset(struct tm *tm)
   time_t time_loc = mktime(tm);
   time_t time_utc = timegm(tm);
   time_t offset = (time_utc - time_loc) / 60;
-  P("ld", time_loc);
-  P("ld", time_utc);
-  P("ld", offset);
+  P(PRITIME, time_loc);
+  P(PRITIME, time_utc);
+  P(PRITIME, offset);
 }
 
 int
@@ -52,7 +56,7 @@ main(int argc, char **argv)
   struct tm *tm = localtime(&t);
 
   print_version();
-  P("ld", t);
+  P(PRITIME, t);
   print_strftime(tm);
   print_is_dst(tm);
   print_offset(tm);
