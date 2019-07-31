@@ -20,6 +20,10 @@ shallow_clone: true
 #      7z x -y -owin_flex_bison win_flex_bison-2.5.10.zip
 #    )
 
+init:
+  - set PATH=C:\Ruby26-x64\bin;%PATH%
+  - ruby --version
+
 build_script:
 #  - tzutil /l
   - tzutil /s "Romance Standard Time"
