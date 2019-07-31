@@ -14,7 +14,7 @@ environment:
   vs_root: C:\Program Files (x86)\Microsoft Visual Studio
   matrix:
     # Visual Studio 2017 64bit
-    - visualcpp: %vs_root%\2017\Community\VC\Auxiliary\Build\vcvars64.bat
+    - visualcpp: $(vs_root)\2017\Community\VC\Auxiliary\Build\vcvars64.bat
 
 #    # Visual Studio 2015 64bit
 #    - visualcpp: C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat
