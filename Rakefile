@@ -2,6 +2,7 @@ require 'rbconfig'
 
 Dir.glob("src/*.c") do |src|
   base_exe = File.basename(src, ".*")
+#  exe = File.join("bin", "#{base_exe}#{RbConfig::CONFIG['EXEEXT']}")
   exe = "bin/#{base_exe}#{RbConfig::CONFIG['EXEEXT']}"
 
   desc base_exe

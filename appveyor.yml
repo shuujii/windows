@@ -1,10 +1,10 @@
 version: "{build}"
 
 image:
-  - Visual Studio 2019
+#  - Visual Studio 2019
   - Visual Studio 2017
-  - Visual Studio 2015
-  - Visual Studio 2013
+#  - Visual Studio 2015
+#  - Visual Studio 2013
 
 shallow_clone: true
 
@@ -21,5 +21,6 @@ shallow_clone: true
 #    )
 
 build_script:
-  - tzutil /l
-  - rake time_zone
+#  - tzutil /l
+  - tzutil /s "Romance Standard Time"
+  - rake -t time_zone
