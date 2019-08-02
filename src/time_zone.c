@@ -55,28 +55,28 @@ print_offset(struct tm *tm)
   P(PRITIME, offset);
 }
 
-static void
-test_varg(int argc, ...)
-{
-  va_list ap;
-  char *s;
-  int64_t i64;
-
-  va_start(ap, argc);
-  for (int i = 0; i < argc; i++) {
-    switch (i) {
-      case 0:
-        s = va_arg(ap, char*);
-        printf("[%d] %s\n", i, s);
-        break;
-      default:
-        i64 = va_arg(ap, int64_t);
-        printf("[%d] %" PRId64 "\n", i, i64);
-        break;
-    }
-  }
-  va_end(ap);
-}
+//static void
+//test_varg(int argc, ...)
+//{
+//  va_list ap;
+//  char *s;
+//  int64_t i64;
+//
+//  va_start(ap, argc);
+//  for (int i = 0; i < argc; i++) {
+//    switch (i) {
+//      case 0:
+//        s = va_arg(ap, char*);
+//        printf("[%d] %s\n", i, s);
+//        break;
+//      default:
+//        i64 = va_arg(ap, int64_t);
+//        printf("[%d] %" PRId64 "\n", i, i64);
+//        break;
+//    }
+//  }
+//  va_end(ap);
+//}
 
 int
 main(int argc, char **argv)
@@ -84,12 +84,11 @@ main(int argc, char **argv)
   time_t t = time(NULL);
   struct tm *tm = localtime(&t);
 
-  struct backtrace_location {
-    int32_t lineno;
-    uint32_t method_id;
-    const char *filename;
-  } bt, *btp;
-
+//  struct backtrace_location {
+//    int32_t lineno;
+//    uint32_t method_id;
+//    const char *filename;
+//  } bt, *btp;
 
   print_version();
   P(PRITIME, t);
@@ -97,8 +96,8 @@ main(int argc, char **argv)
   print_is_dst(tm);
   print_offset(tm);
 
-  bt.lineno = 32;
-  bt.filename = "C:\\projects\\mruby\\test\\t\\exception.rb";
+//  bt.lineno = 32;
+//  bt.filename = "C:\\projects\\mruby\\test\\t\\exception.rb";
 //  printf("bt = %s:%" PRId64 "\n", bt.filename, bt.lineno);
 
 //  int32_t dummy1 = INT32_MAX;
@@ -110,14 +109,14 @@ main(int argc, char **argv)
 //  test_varg(2, "s3", dummy2);
 //  test_varg(2, "s4", i64);
 
-  test_varg(2, bt.filename, bt.lineno);
-
-  btp = malloc(sizeof(struct backtrace_location));
-  btp->lineno = 33;
-  btp->method_id = 108;
-  btp->filename = "heep";
-  test_varg(2, btp->filename, btp->lineno);
-  free(btp);
+//  test_varg(2, bt.filename, bt.lineno);
+//
+//  btp = malloc(sizeof(struct backtrace_location));
+//  btp->lineno = 33;
+//  btp->method_id = 108;
+//  btp->filename = "heep";
+//  test_varg(2, btp->filename, btp->lineno);
+//  free(btp);
 
   return EXIT_SUCCESS;
 }
