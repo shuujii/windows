@@ -59,7 +59,11 @@ main(int argc, char **argv)
 {
   time_t t = time(NULL);
   struct tm *tm = localtime(&t);
-  int32_t i32 = 32;
+  struct backtrace_location {
+    int32_t lineno;
+    uint32_t method_id;
+    const char *filename;
+  } bt;
 
   print_version();
   P(PRITIME, t);
@@ -67,7 +71,9 @@ main(int argc, char **argv)
   print_is_dst(tm);
   print_offset(tm);
 
-  P(PRId64, i32);
+  bt.lineno = 32;
+  bt.filename = "C:\\projects\\mruby\\test\\t\\exception.rb";
+  printf("bt = %s:%" PRId64 "\n", bt.filename, bt.lineno);
 
   return EXIT_SUCCESS;
 }
