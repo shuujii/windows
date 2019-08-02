@@ -100,10 +100,14 @@ main(int argc, char **argv)
 //  bt.filename = "C:\\projects\\mruby\\test\\t\\exception.rb";
 //  printf("bt = %s:%" PRId64 "\n", bt.filename, bt.lineno);
 
-  int64_t i64 = 64;
-  test_varg(2, "str1", i64);
+  int32_t dummy1 = INT32_MAX;
   int32_t i32 = 32;
-  test_varg(2, "str2", i32);
+  int32_t dummy2 = INT32_MAX;
+  int64_t i64 = 64;
+  test_varg(2, "s1", dummy1);
+  test_varg(2, "s2", i32);
+  test_varg(2, "s3", dummy2);
+  test_varg(2, "s4", i64);
 
   return EXIT_SUCCESS;
 }
