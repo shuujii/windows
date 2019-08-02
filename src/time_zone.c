@@ -88,7 +88,8 @@ main(int argc, char **argv)
     int32_t lineno;
     uint32_t method_id;
     const char *filename;
-  } bt;
+  } bt, *btp;
+
 
   print_version();
   P(PRITIME, t);
@@ -111,6 +112,12 @@ main(int argc, char **argv)
 
   test_varg(2, bt.filename, bt.lineno);
 
+  btp = malloc(sizeof(struct backtrace_location));
+  btp->lineno = 33;
+  btp->method_id = 108;
+  btp->filename = "heep";
+  test_varg(2, btp->filename, btp->lineno);
+  free(btp);
 
   return EXIT_SUCCESS;
 }
