@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stdint.h>
+#include <inttypes.h>
 
 #if defined(_WIN32) || defined(_WIN64)
 # define timegm _mkgmtime
@@ -57,12 +59,15 @@ main(int argc, char **argv)
 {
   time_t t = time(NULL);
   struct tm *tm = localtime(&t);
+  int32_t i32 = 32;
 
   print_version();
   P(PRITIME, t);
   print_strftime(tm);
   print_is_dst(tm);
   print_offset(tm);
+
+  P(PRId64, i32);
 
   return EXIT_SUCCESS;
 }
