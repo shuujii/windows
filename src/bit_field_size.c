@@ -52,7 +52,7 @@ struct {
   enum mrb_fiber_state status;
   uint16_t esize, eidx, rsize;
   mrb_bool vmexec;
-} mrb_context_Ordered;
+} mrb_context_Sorted;
 
 struct {
   struct mrb_context *prev;
@@ -64,7 +64,7 @@ struct {
   uint16_t esize, eidx, rsize;
   uint8_t status;
   mrb_bool vmexec;
-} mrb_context_Ordered_Uint8;
+} mrb_context_Sorted_Uint8;
 
 #define PRINT_SIZE(type) printf("%-26s = %3d\n", #type, (int)sizeof(type))
 
@@ -73,6 +73,6 @@ int main(void) {
   PRINT_SIZE(mrb_context_Original);
   PRINT_SIZE(mrb_context_BitField_Enum);
   PRINT_SIZE(mrb_context_BitField_Uint8);
-  PRINT_SIZE(mrb_context_Ordered);
-  PRINT_SIZE(mrb_context_Ordered_Uint8);
+  PRINT_SIZE(mrb_context_Sorted);
+  PRINT_SIZE(mrb_context_Sorted_Uint8);
 }

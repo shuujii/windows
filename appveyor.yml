@@ -20,5 +20,4 @@ init:
 
 build_script:
 #  - ruby -v
-  - ruby -e 'print "\n---\n#{File.read(Dir[%|src/*.c|][0])}---\n\n"'
-  - rake -s run
+  - rake -E $stdout.sync=true -s run_with_print

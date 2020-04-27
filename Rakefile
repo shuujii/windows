@@ -8,6 +8,16 @@ task :all
 desc "run all"
 task :run => :all
 
+desc "run all with printing source file"
+task :run_with_print => :all do
+  puts
+  puts "---"
+  puts File.read(Dir["src/*.c"][0])
+  puts "---"
+  puts
+  Rake::Task[:run].invoke
+end
+
 Dir.glob("src/*.c") do |src|
   base_exe = File.basename(src, ".*")
   exe = "bin/#{base_exe}#{RbConfig::CONFIG['EXEEXT']}"
