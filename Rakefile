@@ -1,10 +1,28 @@
 require 'rbconfig'
 
+task :default => :all
+
+desc "build all"
+task :all
+
+desc "run all"
+task :run => :all
+
+desc "run all with printing source file"
+task :run_with_print => :all do
+  puts
+  puts "---"
+  puts File.read(Dir["src/*.c"][0])
+  puts "---"
+  puts
+  Rake::Task[:run].invoke
+end
+
 Dir.glob("src/*.c") do |src|
   base_exe = File.basename(src, ".*")
   exe = "bin/#{base_exe}#{RbConfig::CONFIG['EXEEXT']}"
 
-  desc base_exe
+  desc "build #{base_exe}"
   task base_exe => exe
   file exe => src do |t|
     mkpath "bin"
@@ -16,5 +34,11 @@ Dir.glob("src/*.c") do |src|
     end
 #    puts "$ #{cmd}"
     sh cmd
+  end
+
+  task :all => exe
+
+  task :run do
+    sh exe
   end
 end

@@ -19,9 +19,5 @@ init:
   - set PATH=C:\Ruby26-x64\bin;%PATH%
 
 build_script:
-  - ruby -v
-#  - tzutil /l
-  - tzutil /s "Romance Standard Time"
-#  - rake -t time_zone
-  - rake time_zone
-  - bin\time_zone
+#  - ruby -v
+  - rake -E $stdout.sync=true -s run_with_print
