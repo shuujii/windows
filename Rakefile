@@ -29,7 +29,7 @@ Dir.glob("src/*.c") do |src|
     mkpath "bin"
     if RbConfig::CONFIG['host_os'] =~ /mswin(?!ce)|mingw|bccwin/
 #      cmd = "cl /nologo /W3 /D_CRT_SECURE_NO_WARNINGS #{src} /link /out:#{exe}"
-      cmd = "cl /W3 /D_CRT_SECURE_NO_WARNINGS #{src} #{cflags} /link /out:#{exe}"
+      cmd = "cl /W3 /D_CRT_SECURE_NO_WARNINGS #{cflags} #{src} /link /out:#{exe}"
     else
       cmd = "clang -Wall #{cflags} -o #{exe} #{src}"
     end
